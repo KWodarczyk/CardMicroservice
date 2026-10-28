@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.3.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="NSwag.ApiDescription.Client" Version="14.6.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Dependency note: regenerate CardDataServiceClient.cs whenever CardDataApi's contract
+         changes, by refreshing OpenApiSpecs/CardDataApi.swagger.json (see that folder's
+         comments) and then rebuilding this project. -->
+    <OpenApiReference Include="OpenApiSpecs\CardDataApi.swagger.json" CodeGenerator="NSwagCSharp" Namespace="CardMicroserviceApi.CardDataApiClient" ClassName="CardDataServiceClient" />
+  </ItemGroup>
+
+</Project>

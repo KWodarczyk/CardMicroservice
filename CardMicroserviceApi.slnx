@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="../../../../OneDrive - NANDPS/Desktop/Moje/milenium/Zadanie programistyczne2_2026.pdf" />
+  </Folder>
+  <Project Path="CardDataApi/CardDataApi.csproj" />
+  <Project Path="CardMicroserviceApi.Tests/CardMicroserviceApi.Tests.csproj" />
+  <Project Path="CardMicroserviceApi/CardMicroserviceApi.csproj" />
+</Solution>

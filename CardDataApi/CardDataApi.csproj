@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.3.1" />
+  </ItemGroup>
+
+  <!--
+    Keeps CardMicroserviceApi/OpenApiSpecs/CardDataApi.swagger.json in sync with this
+    project's controllers/DTOs automatically. After every build, the Swashbuckle CLI
+    tool (dotnet tool, see ../../.config/dotnet-tools.json) loads the just-built
+    CardDataApi.dll, generates the OpenAPI document from it directly (no running app
+    required), and overwrites the committed snapshot consumed by CardMicroserviceApi's
+    NSwag-generated client.
+  -->
+  <Target Name="RegenerateCardDataApiSwagger" AfterTargets="Build" Condition="'$(DesignTimeBuild)' != 'true'">
+    <Exec Command="dotnet tool run swagger tofile --output &quot;$(MSBuildThisFileDirectory)..\CardMicroserviceApi\OpenApiSpecs\CardDataApi.swagger.json&quot; &quot;$(TargetPath)&quot; v1"
+          WorkingDirectory="$(MSBuildThisFileDirectory)..\.." />
+  </Target>
+
+</Project>
+
